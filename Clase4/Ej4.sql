@@ -36,7 +36,7 @@ WHERE F.title = 'ZOOLANDER FICTION';
 
 #6 Show the address, city and country of the store with id 1
 
-SELECT address, city, country 
+SELECT address as direccion, city as ciudad, country as pais 
 FROM store as S 
 INNER JOIN address as AD ON S.address_id = AD.address_id 
 INNER JOIN city as C ON AD.city_id = C.city_id 
@@ -45,4 +45,13 @@ WHERE S.store_id = 1;
 
 #7 Show pair of film titles and rating of films that have the same rating.;
 
-#8 Get all the films that are available in store id 2 and the manager first/last name of this store (the manager will appear in all the rows).
+SELECT f1.title, f1.rating, f2.title, f2.rating FROM film f1, film f2 WHERE f1.film_id < f2.film_id AND f1.rating = f2.rating;
+
+#8 Get all the films that are available in store id 2 and the manager first/last name of this store (the manager will appear in all the rows).;
+
+select distinct f.film_id, f.title as Pelicula, s.store_id as Tienda, concat(m.first_name, ' ', m.last_name) AS Manager
+from inventory i 
+inner join film f on i.film_id = f.film_id
+inner join store s on i.store_id = s.store_id
+inner join staff m on s.manager_staff_id = m.staff_id
+where s.store_id = 2;
