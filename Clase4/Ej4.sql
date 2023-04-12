@@ -45,15 +45,17 @@ WHERE S.store_id = 1;
 
 #7 Show pair of film titles and rating of films that have the same rating.;
 
-SELECT F1.title AS Film_1_NAME, F1.rating AS Film_1_RATING, F2.title AS Film_2_NAME, F2.rating AS Film_2_RATING 
+SELECT F1.title AS titulo_2, F1.rating AS rating_1, F2.title AS titulo_2, F2.rating AS rating_2 
 FROM film F1, film F2 
 WHERE F1.film_id < F2.film_id AND F1.rating = F2.rating;
 
 #8 Get all the films that are available in store id 2 and the manager first/lASt name of this store (the manager will appear in all the rows).;
 
-SELECT DISTINCT F.film_id, F.title AS Pelicula, S.store_id AS Tienda, cONcat(M.first_name, ' ', M.lASt_name) AS Manager
+SELECT DISTINCT F.film_id, F.title AS Titulo, S.store_id AS Tienda, cONcat(M.first_name, ' ', M.lASt_name) AS Manager
 FROM inventory I 
 INNER JOIN film F ON I.film_id = F.film_id
 INNER JOIN store S ON I.store_id = S.store_id
 INNER JOIN staff M ON S.manager_staff_id = M.staff_id
 WHERE S.store_id = 2;
+
+#end of program
