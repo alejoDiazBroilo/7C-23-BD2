@@ -6,9 +6,13 @@ SELECT title AS titulo_pelicula, special_features AS tags
 FROM film AS F 
 WHERE rating = 'PG-13';
 
-#2 Get a list of all the different films duration.;
+#2 Get a list of all the different films duratiON.;
 
+<<<<<<< HEAD
 SELECT DISTINCT length AS duracion 
+=======
+SELECT DISTINCT length AS duraciON 
+>>>>>>> 348dcae7d232c1ef0588f045badd706628c4ac9e
 FROM film AS F 
 order by length ASc;
 
@@ -36,7 +40,7 @@ WHERE F.title = 'ZOOLANDER FICTION';
 
 #6 Show the address, city and country of the store with id 1
 
-SELECT address AS direccion, city AS ciudad, country AS pais 
+SELECT address AS direcciON, city AS ciudad, country AS pais 
 FROM store AS S 
 INNER JOIN address AS AD ON S.address_id = AD.address_id 
 INNER JOIN city AS C ON AD.city_id = C.city_id 
@@ -45,13 +49,26 @@ WHERE S.store_id = 1;
 
 #7 Show pair of film titles and rating of films that have the same rating.;
 
-SELECT f1.title, f1.rating, f2.title, f2.rating FROM film f1, film f2 WHERE f1.film_id < f2.film_id AND f1.rating = f2.rating;
+SELECT F1.title AS titulo_2, F1.rating AS rating_1, F2.title AS titulo_2, F2.rating AS rating_2 
+FROM film F1, film F2 
+WHERE F1.film_id < F2.film_id AND F1.rating = F2.rating;
 
 #8 Get all the films that are available in store id 2 and the manager first/lASt name of this store (the manager will appear in all the rows).;
 
+<<<<<<< HEAD
 SELECT DISTINCT F.film_id, F.title AS Pelicula, S.store_id AS Tienda, concat(M.first_name, ' ', M.lASt_name) AS Manager
 FROM inventory I 
 INNER JOIN film F on I.film_id = F.film_id
 INNER JOIN store S on I.store_id = S.store_id
 INNER JOIN staff M on S.manager_staff_id = M.staff_id
 WHERE S.store_id = 2;
+=======
+SELECT DISTINCT F.film_id, F.title AS Titulo, S.store_id AS Tienda, cONcat(M.first_name, ' ', M.lASt_name) AS Manager
+FROM inventory I 
+INNER JOIN film F ON I.film_id = F.film_id
+INNER JOIN store S ON I.store_id = S.store_id
+INNER JOIN staff M ON S.manager_staff_id = M.staff_id
+WHERE S.store_id = 2;
+
+#end of program
+>>>>>>> 348dcae7d232c1ef0588f045badd706628c4ac9e
